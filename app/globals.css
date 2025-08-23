@@ -1,0 +1,194 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to magenta-based cartoony color palette with complementary colors */
+  --background: #fef7ff;
+  --foreground: #4a1d4a;
+  --card: #fdf4ff;
+  --card-foreground: #4a1d4a;
+  --popover: #ffffff;
+  --popover-foreground: #4a1d4a;
+  --primary: #d946ef;
+  --primary-foreground: #ffffff;
+  --secondary: #06d6a0;
+  --secondary-foreground: #ffffff;
+  --muted: #f3e8ff;
+  --muted-foreground: #6b21a8;
+  --accent: #fbbf24;
+  --accent-foreground: #92400e;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e9d5ff;
+  --input: #f3e8ff;
+  --ring: rgba(217, 70, 239, 0.5);
+  --chart-1: #d946ef;
+  --chart-2: #06d6a0;
+  --chart-3: #fbbf24;
+  --chart-4: #f472b6;
+  --chart-5: #8b5cf6;
+  --radius: 1rem;
+  --sidebar: #fdf4ff;
+  --sidebar-foreground: #4a1d4a;
+  --sidebar-primary: #d946ef;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #06d6a0;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e9d5ff;
+  --sidebar-ring: rgba(217, 70, 239, 0.5);
+  --font-geist: "Geist", sans-serif;
+  --font-manrope: "Manrope", serif;
+}
+
+.dark {
+  /* Updated dark mode with magenta theme */
+  --background: #2d1b2d;
+  --foreground: #fef7ff;
+  --card: #4a1d4a;
+  --card-foreground: #fef7ff;
+  --popover: #4a1d4a;
+  --popover-foreground: #fef7ff;
+  --primary: #d946ef;
+  --primary-foreground: #ffffff;
+  --secondary: #06d6a0;
+  --secondary-foreground: #ffffff;
+  --muted: #6b21a8;
+  --muted-foreground: #e9d5ff;
+  --accent: #fbbf24;
+  --accent-foreground: #92400e;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #6b21a8;
+  --input: #6b21a8;
+  --ring: rgba(217, 70, 239, 0.5);
+  --chart-1: #d946ef;
+  --chart-2: #06d6a0;
+  --chart-3: #fbbf24;
+  --chart-4: #f472b6;
+  --chart-5: #8b5cf6;
+  --sidebar: #4a1d4a;
+  --sidebar-foreground: #fef7ff;
+  --sidebar-primary: #d946ef;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #06d6a0;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #6b21a8;
+  --sidebar-ring: rgba(217, 70, 239, 0.5);
+}
+
+@theme inline {
+  /* Updated font configuration for Geist and Manrope */
+  --font-sans: var(--font-geist);
+  --font-serif: var(--font-manrope);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .bounce-gentle {
+    animation: bounce-gentle 2s infinite;
+  }
+
+  .wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .sparkle {
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes bounce-gentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(1deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
