@@ -11,6 +11,7 @@ interface BookSet {
     dateAdded: string
     shelves: string[]
   }>
+  categories: string[] // <-- ADD THIS LINE
   createdAt: string
   lastAccessed: string
 }
@@ -22,7 +23,7 @@ export class SetManager {
     return Math.floor(1000 + Math.random() * 9000).toString()
   }
 
-  static createSet(name: string, books: any[], customCode?: string): BookSet {
+  static createSet(name: string, books: any[], categories: string[], customCode?: string): BookSet { // <-- UPDATE FUNCTION SIGNATURE
     const code = customCode || this.generateCode()
     const id = `${name.toLowerCase().replace(/\s+/g, "-")}-${Date.now()}`
 
@@ -31,6 +32,7 @@ export class SetManager {
       name: name.trim(),
       code,
       books,
+      categories, // <-- ADD THIS LINE
       createdAt: new Date().toISOString(),
       lastAccessed: new Date().toISOString(),
     }
