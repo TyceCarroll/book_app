@@ -142,7 +142,6 @@ export default function AccessPage() {
   }
 
   if (currentSet) {
-    // space-y-6
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-card to-muted">
         <header className="container mx-auto px-4 py-6">
@@ -161,7 +160,8 @@ export default function AccessPage() {
         </header>
 
         <main className="container mx-auto px-4 py-8">
-          <div className="space-y-6">
+          {/* Change 1: Remove space-y-6 from the parent div */}
+          <div>
             <Card className="border-2 border-primary/20">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -210,14 +210,17 @@ export default function AccessPage() {
               </CardContent>
             </Card>
 
+            {/* Change 2: Add mt-6 to the CategoryFilter component */}
             <CategoryFilter
               books={displayBooks}
               selectedCategories={selectedCategories}
               onCategoryChange={handleCategoryChange}
               allCategories={availableCategories}
+              className="mt-6"
             />
 
-            <BookList books={filteredBooks} onBookDelete={handleDeleteBook} showDeleteButton={true} />
+            {/* Change 3: Add mt-6 to the BookList component */}
+            <BookList books={filteredBooks} onBookDelete={handleDeleteBook} showDeleteButton={true} className="mt-6" />
           </div>
         </main>
       </div>
