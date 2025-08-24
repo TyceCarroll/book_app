@@ -1,3 +1,4 @@
+// book-list.tsx
 "use client"
 
 import { useState } from "react"
@@ -42,7 +43,9 @@ export function BookList({ books, onBookDelete, showDeleteButton = false }: Book
     }
     setDeletingIndex(null)
   }
-
+  
+  // This comment forces the purger to keep the gap class
+  // gap-4
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {books.map((book, index) => (

@@ -19,22 +19,21 @@ import { Save, RefreshCw, Copy, Check } from "lucide-react"
 import { SetManager } from "@/lib/set-manager"
 
 interface SaveSetDialogProps {
-  books?: any[]
-  filteredBooks?: any[]
+  books: any[]
   categories?: string[]
   onSetSaved?: (setData: any) => void
 }
 
 export function SaveSetDialog({
   books = [],
-  filteredBooks = [],
   categories = [],
   onSetSaved
 }: SaveSetDialogProps) {
   const [open, setOpen] = useState(false)
   const [setName, setSetName] = useState("")
   const [setCode, setSetCode] = useState(SetManager.generateCode())
-  const [saveOption, setSaveOption] = useState("filtered")
+  // This is the fix: change the default state to "all"
+  const [saveOption, setSaveOption] = useState("all") 
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
   const [savedSet, setSavedSet] = useState<any>(null)
@@ -63,8 +62,7 @@ export function SaveSetDialog({
     setError("")
 
     try {
-      const booksToSave = saveOption === "filtered" ? filteredBooks : books
-      // Correct the call to SetManager.createSet
+      const booksToSave = saveOption === "all" ? books : [] // Always save all books
       const newSet = SetManager.createSet(setName.trim(), booksToSave, categories, setCode)
       setSavedSet(newSet)
       onSetSaved?.(newSet)
@@ -97,7 +95,7 @@ export function SaveSetDialog({
     setOpen(false)
     setSetName("")
     setSetCode(SetManager.generateCode())
-    setSaveOption("filtered")
+    setSaveOption("all") // Reset to "all" on close
     setError("")
     setSavedSet(null)
     setCodeCopied(false)
