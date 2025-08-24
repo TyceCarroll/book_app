@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { Geist } from "next/font/google"
 import { Manrope } from "next/font/google"
 import "./globals.css"
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/next"
 
 const geist = Geist({
   subsets: ["latin"],
